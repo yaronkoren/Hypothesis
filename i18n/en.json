@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yaron Koren"
+		]
+	},
+	"hypothesis-desc": "Integration with the Hypothes.is annotation software",
+	"right-hypothesis-annotate": "View the Hypothes.is interface for wiki pages"
+}

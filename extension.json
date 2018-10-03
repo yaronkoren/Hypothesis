@@ -1,0 +1,37 @@
+{
+	"name": "Hypothesis",
+	"version": "0.1",
+	"author": [
+		"Yaron Koren"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Hypothesis",
+	"descriptionmsg": "hypothesis-desc",
+	"license-name": "GPL-3.0",
+	"type": "hook",
+	"requires": {
+		"MediaWiki": ">= 1.25.0"
+	},
+	"GroupPermissions": {
+		"user": {
+			"hypothesis-annotate": true
+		}
+	},
+	"AvailableRights": [
+		"hypothesis-annotate"
+	],
+	"MessagesDirs": {
+		"Hypothesis": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"HypothesisHooks": "Hypothesis.hooks.php"
+	},
+	"Hooks": {
+		"SkinAfterBottomScripts": "HypothesisHooks::addHypothesisScript"
+	},
+	"config": {
+		"HypothesisNamespaces": [0]
+	},
+	"manifest_version": 1
+}
