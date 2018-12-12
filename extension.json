@@ -25,10 +25,13 @@
 		]
 	},
 	"AutoloadClasses": {
-		"HypothesisHooks": "Hypothesis.hooks.php"
+		"HypothesisHooks": "Hypothesis.hooks.php",
+		"HypothesisClient": "includes/HypothesisClient.php",
+		"HypothesisJWT": "includes/HypothesisJWT.php"
 	},
 	"Hooks": {
-		"SkinAfterBottomScripts": "HypothesisHooks::addHypothesisScript"
+		"SkinAfterBottomScripts": "HypothesisHooks::addHypothesisScript",
+		"MakeGlobalVariablesScript": "HypothesisHooks::setGlobalJSVariables"
 	},
 	"config": {
 		"HypothesisNamespaces": [0]
