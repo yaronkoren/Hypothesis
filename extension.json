@@ -34,7 +34,13 @@
 		"MakeGlobalVariablesScript": "HypothesisHooks::setGlobalJSVariables"
 	},
 	"config": {
-		"HypothesisNamespaces": [0]
+		"HypothesisNamespaces": [0],
+		"HypothesisClientID": null,
+		"HypothesisClientSecret": null,
+		"HypothesisJWTClientID": null,
+		"HypothesisJWTClientSecret": null,
+		"HypothesisAuthority": null,
+		"HypothesisService": "http://localhost:5000"
 	},
 	"manifest_version": 1
 }

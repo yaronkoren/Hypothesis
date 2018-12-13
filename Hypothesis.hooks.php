@@ -20,6 +20,9 @@ class HypothesisHooks {
 
 	static function setGlobalJSVariables( &$vars ) {
 		global $wgTitle, $wgUser, $wgHypothesisNamespaces;
+		global $wgHypothesisClientID, $wgHypothesisClientSecret,
+			$wgHypothesisJWTClientID, $wgHypothesisJWTClientSecret,
+			$wgHypothesisAuthority, $wgHypothesisService;
 
 		if ( !in_array( $wgTitle->getNamespace(), $wgHypothesisNamespaces ) ) {
 			return true;
@@ -29,19 +32,15 @@ class HypothesisHooks {
 			return true;
 		}
 
-		$username = $wgUser->getName();
-		$hypothesis_service = getenv('HYPOTHESIS_SERVICE');
-		if ( $hypothesis_service == null ) {
-			$hypothesis_service = 'http://localhost:5000';
-		}
 		$hypClient = new HypothesisClient(
-			$authority = getenv('HYPOTHESIS_AUTHORITY'),
-			$client_id = getenv('HYPOTHESIS_CLIENT_ID'),
-			$client_secret = getenv('HYPOTHESIS_CLIENT_SECRET'),
-			$jwt_client_id = getenv('HYPOTHESIS_JWT_CLIENT_ID'),
-			$jwt_client_secret = getenv('HYPOTHESIS_JWT_CLIENT_SECRET'),
-			$service = $hypothesis_service
+			$wgHypothesisClientID,
+			$wgHypothesisClientSecret,
+			$wgHypothesisJWTClientID,
+			$wgHypothesisJWTClientSecret,
+			$wgHypothesisAuthority,
+			$wgHypothesisService
 		);
+		$username = $wgUser->getName();
 		$grantToken = $hypClient->grant_token( $username );
 		$vars['hypothesisGrantToken'] = $grantToken;
 

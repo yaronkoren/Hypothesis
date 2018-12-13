@@ -8,11 +8,11 @@ class HypothesisClient {
 
 	function __construct( $client_id, $client_secret, $jwt_client_id,
 			 $jwt_client_secret, $authority, $service) {
-		$this->authority = $authority;
 		$this->client_id = $client_id;
 		$this->client_secret = $client_secret;
 		$this->jwt_client_id = $jwt_client_id;
 		$this->jwt_client_secret = $jwt_client_secret;
+		$this->authority = $authority;
 		$this->service = $service;
 	}
 
@@ -48,10 +48,12 @@ class HypothesisClient {
 
 	function make_request( $method, $path, $data ) {
 		$jsonData = json_encode( $data );
+		$jsonAuth = array( $this->client_id, $this->client_secret );
 		$contextOptions = array(
 			'method' => $method,
 			'header' => 'Content-type: application/x-www-form-urlencoded',
-			'data' => http_build_query( $jsonData )
+			'data' => http_build_query( $jsonData ),
+			'auth' => http_build_query( jsonAuth )
 		);
 		// Don't verify SSL certificates if posting to localhost.
 		$domain = $this->extract_domain( $this->service );
