@@ -47,13 +47,14 @@ class HypothesisClient {
 	}
 
 	function make_request( $method, $path, $data ) {
-		$jsonData = json_encode( $data );
-		$jsonAuth = array( $this->client_id, $this->client_secret );
+		$authInfo = array( $this->client_id, $this->client_secret );
 		$contextOptions = array(
-			'method' => $method,
-			'header' => 'Content-type: application/x-www-form-urlencoded',
-			'data' => http_build_query( $jsonData ),
-			'auth' => http_build_query( jsonAuth )
+			'http' => array(
+				'method' => $method,
+				'header' => 'Content-type: application/x-www-form-urlencoded',
+				'data' => http_build_query( $data ),
+				'auth' => http_build_query( $authInfo )
+			)
 		);
 		// Don't verify SSL certificates if posting to localhost.
 		$domain = $this->extract_domain( $this->service );

@@ -41,6 +41,12 @@ class HypothesisHooks {
 			$wgHypothesisService
 		);
 		$username = $wgUser->getName();
+		$email = $wgUser->getEmail();
+
+		// Create a Hypothesis account for this user, if one didn't
+		// exist already.
+		$hypClient->create_account( $username, $email );
+
 		$grantToken = $hypClient->grant_token( $username );
 		$vars['hypothesisGrantToken'] = $grantToken;
 
