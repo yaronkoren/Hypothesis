@@ -29,9 +29,20 @@
 		"HypothesisClient": "includes/HypothesisClient.php",
 		"HypothesisJWT": "includes/HypothesisJWT.php"
 	},
+	"ResourceModules": {
+		"ext.hypothesis.site": {
+			"scripts": "libs/site.js",
+			"styles": "libs/site.css"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Hypothesis"
+	},
 	"Hooks": {
 		"SkinAfterBottomScripts": "HypothesisHooks::addHypothesisScript",
-		"MakeGlobalVariablesScript": "HypothesisHooks::setGlobalJSVariables"
+		"MakeGlobalVariablesScript": "HypothesisHooks::setGlobalJSVariables",
+		"OutputPageParserOutput": "HypothesisHooks::addSiteModule"
 	},
 	"config": {
 		"HypothesisNamespaces": [0],

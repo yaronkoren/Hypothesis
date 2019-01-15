@@ -52,4 +52,9 @@ class HypothesisHooks {
 
 		return true;
 	}
+
+	public static function addSiteModule( OutputPage &$out, ParserOutput $parserOutput ) {
+		$out->addModules( 'ext.hypothesis.site' );
+		return true;
+	}
 }
